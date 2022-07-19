@@ -1,0 +1,5 @@
+log.path: /data/logs/shorturl
+server:
+   port: 9961
+   servlet:
+      context-path: /

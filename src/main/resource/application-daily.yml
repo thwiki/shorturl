@@ -1,0 +1,5 @@
+jdbc:
+    url: jdbc:mysql://localhost:3306/thwiki?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&characterEncoding=UTF8&allowMultiQueries=true
+    user: root
+    password: 
+    driver: com.mysql.cj.jdbc.Driver
