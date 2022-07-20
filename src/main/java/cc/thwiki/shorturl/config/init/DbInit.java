@@ -25,7 +25,7 @@ public class DbInit {
     public void init() throws SQLException, IOException {
         try (Connection connection = druidDataSource.getConnection()) {
             try (Statement stat = connection.createStatement()) {
-                executeSql(stat, new ClassPathResource("init_table.sql"));
+                executeSql(stat, new ClassPathResource("db/init_table.sql"));
             }
         }
     }
