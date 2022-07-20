@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cc.thwiki.shorturl.service.ShortUrlService;
@@ -31,7 +32,7 @@ public class ShortUrlController {
     }
 
     @GetMapping("/create")
-    public ResponseEntity<String> create(String url) {
+    public ResponseEntity<String> create(@RequestParam("url") String url) {
         return ResponseEntity.ok().body(shortUrlService.addShortUrl(url));
     }
 }
