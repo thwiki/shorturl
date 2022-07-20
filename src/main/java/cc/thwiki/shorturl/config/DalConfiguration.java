@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -18,18 +18,18 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 
-import lombok.Setter;
-
-@Setter
 @Configuration
-@ConfigurationProperties(prefix = "jdbc")
 @EnableTransactionManagement(proxyTargetClass = true)
 @MapperScan(basePackages = {"cc.thwiki.shorturl.dal.mapper"})
 public class DalConfiguration {
 
+    @Value("${jdbc.url}")
     private String url;
+    @Value("${jdbc.user}")
     private String user;
+    @Value("${jdbc.password}")
     private String password;
+    @Value("${jdbc.driver}")
     private String driver;
 
     @Bean(initMethod = "init")
