@@ -1,7 +1,7 @@
 package cc.thwiki.shorturl.dal.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.htdong.common.SuperDbDO;
+import com.htdong.common.db.domain.SuperDbDO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

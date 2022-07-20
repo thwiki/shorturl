@@ -17,6 +17,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import com.htdong.common.db.init.DbInit;
 
 import lombok.Setter;
 
@@ -66,5 +67,12 @@ public class DalConfiguration {
         bean.setGlobalConfig(globalConfig);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:sqlmap/*.xml"));
         return bean;
+    }
+    
+    @Bean(initMethod = "init")
+    public DbInit dbInit() {
+        DbInit dbInit = new DbInit();
+        dbInit.setDataSource(dataSource());
+        return dbInit;
     }
 }
