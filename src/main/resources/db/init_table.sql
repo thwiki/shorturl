@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS short_url
    PRIMARY KEY (id),
    UNIQUE KEY (short_path)
 )
-ENGINE= InnoDB DEFAULT CHARSET= utf8_bin;
+ENGINE= InnoDB DEFAULT CHARSET = utf8 COLLATE=utf8_bin;
