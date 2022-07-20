@@ -27,13 +27,9 @@ import lombok.Setter;
 @MapperScan(basePackages = {"cc.thwiki.shorturl.dal.mapper"})
 public class DalConfiguration {
 
-    // @Value("${jdbc.url}")
     private String url;
-    // @Value("${jdbc.user}")
     private String user;
-    // @Value("${jdbc.password}")
     private String password;
-    // @Value("${jdbc.driver}")
     private String driver;
 
     @Bean(initMethod = "init")
