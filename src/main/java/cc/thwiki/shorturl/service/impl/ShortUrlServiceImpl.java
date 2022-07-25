@@ -1,7 +1,5 @@
 package cc.thwiki.shorturl.service.impl;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
