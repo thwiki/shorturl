@@ -15,4 +15,5 @@ public class ShortUrlDO extends SuperDbDO {
 
     private String shortPath;
     private String realUrl;
+    private Long expireTime;
 }
