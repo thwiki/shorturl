@@ -32,7 +32,8 @@ public class ShortUrlController {
     }
 
     @GetMapping("/create")
-    public ResponseEntity<String> create(@RequestParam("url") String url) {
-        return ResponseEntity.ok().body(shortUrlService.addShortUrl(url));
+    public ResponseEntity<String> create(@RequestParam("url") String url,
+        @RequestParam(name = "expireTime", required = false) Long expireTime) {
+        return ResponseEntity.ok().body(shortUrlService.addShortUrl(url, expireTime));
     }
 }

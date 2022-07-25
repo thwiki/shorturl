@@ -24,15 +24,18 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     public String getUrl(String shortPath) {
         QueryWrapper<ShortUrlDO> query = new QueryWrapper<>();
         query.eq(ShortUrlDO.DB_FIELD_SHORT_PATH, shortPath);
+        query.gt(ShortUrlDO.DB_FIELD_EXPIRE_TIME, System.currentTimeMillis()).or()
+            .isNull(ShortUrlDO.DB_FIELD_EXPIRE_TIME);
         ShortUrlDO domain = shortUrlMapper.selectOne(query);
         return domain == null ? null : domain.getRealUrl();
     }
 
     @Override
-    public String addShortUrl(String url) {
+    public String addShortUrl(String url, Long expireTime) {
         ShortUrlDO domain = new ShortUrlDO();
         domain.setRealUrl(url);
         domain.setShortPath(randomShortPath());
+        domain.setExpireTime(expireTime);
         shortUrlMapper.insert(domain);
         return domain.getShortPath();
     }
