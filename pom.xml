@@ -220,6 +220,11 @@
             <artifactId>guava</artifactId>
             <version>30.1.1-jre</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-analyticsreporting</artifactId>
+            <version>v4-rev20211020-1.32.1</version>
+        </dependency>
     </dependencies>
 
     <!-- 编译配置 -->
