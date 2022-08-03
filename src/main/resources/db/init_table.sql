@@ -11,3 +11,4 @@ CREATE TABLE IF NOT EXISTS short_url
    KEY 'idx_expiretime' (expire_time)
 )
 ENGINE= InnoDB DEFAULT CHARSET = utf8 COLLATE=utf8_bin;
+-----
