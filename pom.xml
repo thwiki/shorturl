@@ -11,7 +11,6 @@
         <springboot-version>2.6.7</springboot-version>
         <spring-version>5.3.20</spring-version>
         <jackson-version>2.13.3</jackson-version>
-        <k8s-version>15.0.1</k8s-version>
     </properties>
 
     <dependencies>
