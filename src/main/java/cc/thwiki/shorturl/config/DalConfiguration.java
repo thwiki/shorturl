@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,8 +15,11 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.htdong.common.db.init.DbInit;
 
@@ -66,9 +70,13 @@ public class DalConfiguration {
         globalConfig.setDbConfig(dbConfig);
         bean.setGlobalConfig(globalConfig);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:sqlmap/*.xml"));
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        Interceptor[] plugins = {interceptor};
+        bean.setPlugins(plugins);
         return bean;
     }
-    
+
     @Bean(initMethod = "init")
     public DbInit dbInit() {
         DbInit dbInit = new DbInit();
