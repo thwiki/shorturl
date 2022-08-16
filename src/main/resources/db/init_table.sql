@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS short_url
    real_url varchar (2048) NOT NULL,
    expire_time BIGINT (20) DEFAULT NULL,
    PRIMARY KEY (id),
-   UNIQUE KEY 'uk_shortpath' (short_path),
-   KEY 'idx_expiretime' (expire_time)
+   UNIQUE KEY uk_shortpath (short_path),
+   KEY idx_expiretime (expire_time)
 )
 ENGINE= InnoDB DEFAULT CHARSET = utf8 COLLATE=utf8_bin;
 -----
